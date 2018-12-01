@@ -27,6 +27,6 @@ class ResourceTest extends TestCase
         $arrayResource = $resource->toArray();
 
         $this->assertSame($arrayResource['id'], $product->getId());
-        $this->assertSame($arrayResource['name'], $product->getName());
+        $this->assertSame($arrayResource['attributes']['name'], $product->getName());
     }
 }
