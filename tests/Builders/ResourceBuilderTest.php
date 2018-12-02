@@ -51,12 +51,36 @@ class ResourceBuilderTest extends TestCase
             ->addIncluded($this->stockResource())
             ->response();
 
-        $resource = $response->resource();
+        $resource = $response->toArray();
 
         $this->assertTrue($resource['meta'] instanceof MetaResourceFixture);
         $this->assertTrue(count($resource['data']) === 2);
         $this->assertTrue($resource['jsonapi'] instanceof JsonApiObjectResource);
         $this->assertTrue(count($resource['included']) === 2);
+    }
+
+    /**
+     * @test
+     */
+    public function testSingleResponse()
+    {
+        $product = new Product();
+
+        $product
+            ->setId(1)
+            ->setName('テスト商品');
+
+        $productResource = new ProductResource($product);
+        $productResource->addWith(StockResource::TYPE, $this->stockResource());
+
+        $response = $this
+            ->builder
+            ->add($productResource)
+            ->singleResponse();
+
+        $resource = $response->toArray();
+
+        $this->assertTrue($resource['data'] instanceof ProductResource);
     }
 
     /**

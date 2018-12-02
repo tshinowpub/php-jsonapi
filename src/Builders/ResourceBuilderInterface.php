@@ -38,7 +38,7 @@ interface ResourceBuilderInterface
 
     /**
      * @return ResourceBuilderInterface
-     */
+*/
     public function clearMeta(): ResourceBuilderInterface;
 
     /**

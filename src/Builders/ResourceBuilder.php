@@ -97,7 +97,9 @@ class ResourceBuilder implements ResourceBuilderInterface
     public function singleResponse(): JsonApiResource
     {
         return new JsonApiResource(
-            (current($this->resources) !== false) ? current($this->resources) : null
+            $this->build(
+                (current($this->resources) !== false) ? current($this->resources) : null
+            )
         );
     }
 
@@ -112,11 +114,11 @@ class ResourceBuilder implements ResourceBuilderInterface
     }
 
     /**
-     * @param array
+     * @param mixed
      *
      * @return array
      */
-    private function build(array $jsonResource): array
+    private function build($jsonResource): array
     {
         $resource = [];
         if (isset($this->meta)) {
