@@ -6,7 +6,6 @@ namespace Tshinow\JsonApi\Tests\Builders;
 
 use PHPUnit\Framework\TestCase;
 use Tshinow\JsonApi\Builders\ResourceBuilder;
-use Tshinow\JsonApi\Builders\ResourceBuilderInterface;
 use Tshinow\JsonApi\Resources\JsonApiObjectResource;
 use Tshinow\JsonApi\Tests\Resources\Fixtures\MetaResourceFixture;
 use Tshinow\JsonApi\Tests\Resources\Fixtures\Product;
@@ -17,7 +16,7 @@ use Tshinow\JsonApi\Tests\Resources\Fixtures\StockResource;
 class ResourceBuilderTest extends TestCase
 {
     /**
-     * @var ResourceBuilderInterface
+     * @var ResourceBuilder
      */
     private $builder;
 
